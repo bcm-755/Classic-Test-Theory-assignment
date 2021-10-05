@@ -1,0 +1,24 @@
+---
+title: "CTT Assignment"
+author: "Bruce Mallory"
+date: "10/5/2021"
+output: pdf_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+##bcm NOTES
+a) intrinsic vs. extrinsic ... how does this fit into the mativation score?  Are they at different ends of the continuum?
+
+b) Then there's adaptive vs. mal-adaptive.  How do these fit?
+
+c) And that do the Item Codes mean?  And how do they relate to a) and b)??
+
+d) I HATE GitHub
+
+```{r}
+mtr <- read_excel("Motivations to Teach_Responses.xlsx")
+```
+
