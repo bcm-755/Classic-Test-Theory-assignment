@@ -1,0 +1,35 @@
+---
+title: "CTT Assignment"
+author: "Bruce Mallory"
+date: "10/5/2021"
+output: pdf_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+library(readxl)
+library(psych)
+```
+
+#5. Initial alpha() call
+I've run alpha() with a data set where I have reverse-coded the items.
+```{r comment=""}
+mt_rev <- read_excel("Bruce_CTT_data.xlsx", sheet = "Reverse Coded")
+alpha(mt_rev)
+```
+#6. alpha() call with "check.keys=TRUE"
+```{r comment=""}
+alpha(mt_rev, check.keys=TRUE)
+```
+# Calculating alpha with no reverse-coded questions
+```{r comment=""}
+mt_orig <- read_excel("Bruce_CTT_data.xlsx", sheet = "Transposed Responses")
+alpha(mt_orig[,1:23])$total$raw_alpha
+alpha(mt_orig[,1:23], check.keys = TRUE)$total$raw_alpha
+```
+
+
+```{r}
+keep <- c(1,3,4,6,8,10,11,12,14,15,16,17,18,20,21,23)
+alpha(mt[,keep], check.keys = TRUE)
+```
