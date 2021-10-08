@@ -11,32 +11,35 @@ library(readxl)
 library(psych)
 ```
 
-# 5. Initial alpha() call
-The data set being used has already been reverse-coded based on my item interpretations.
+# initial alpha() call
+The data set was reverse-coded based on my item interpretations.
 ```{r comment=""}
 mt_rev <- read_excel("Bruce_CTT_data.xlsx", sheet = "Reverse Coded")
-alpha(mt_rev)
+alpha(mt_rev)$total[1]
 ```
-# 6. alpha() call with "check.keys=TRUE"
+# alpha() call with "check.keys=TRUE"
 ```{r comment=""}
-alpha(mt_rev, check.keys=TRUE)
-```
-# alpha() with original scores
-The data set being used here is the original data with no items that are reverse-coded.
-```{r comment=""}
-mt_orig <- read_excel("Bruce_CTT_data.xlsx", sheet = "Transposed Responses")
-alpha(mt_orig[,1:23])$total$raw_alpha
-alpha(mt_orig[,1:23], check.keys = TRUE)$total$raw_alpha
+alpha(mt_rev, check.keys=TRUE)$total[1]
 ```
 
-# 8a. First pass at eliminating items
+\newpage
+
+# alpha() with original scores
+This data set is the original data with no items that are reverse-coded.
+```{r comment="", warning=FALSE, message=FALSE}
+mt_orig <- read_excel("Bruce_CTT_data.xlsx", sheet = "Transposed Responses")
+alpha(mt_orig[,1:23])$total[1]
+alpha(mt_orig[,1:23], check.keys = TRUE)$total[1]
+```
+
+# First pass at eliminating items
 ```{r comment=""}
 keep <- c(1,3,4,6,8,10,11,12,14,15,16,17,18,20,21,23)
 alpha(mt_orig[,keep])
 alpha(mt_orig[,keep], check.keys = TRUE)$total$raw_alpha
 ```
 
-# 8b. Second pass at eliminating items
+# Second pass at eliminating items
 ```{r comment=""}
 # keep <- c(1,4,6,8,10,11,12,14,15,16,17,18,20,21,23)
 # alpha(mt_orig[,keep], check.keys = TRUE)
